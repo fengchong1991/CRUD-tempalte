@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUB_Generic.DAL.Mappings
+namespace CRUD_Generic.DAL.Mappings
 {
     public class UserMapping : EntityTypeConfiguration<User>
     {
@@ -18,7 +18,7 @@ namespace CRUB_Generic.DAL.Mappings
             Property(t => t.Email).IsRequired();
             Property(t => t.Password).IsRequired();
             Property(t => t.CreationDate).IsRequired();
-            Property(t => t.ModeifiedDate).IsRequired();
+            Property(t => t.ModifiedDate).IsRequired();
 
             ToTable("Users");
  

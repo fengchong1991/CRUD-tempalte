@@ -1,5 +1,5 @@
-﻿using CRUB_Generic.DAL.Mappings;
-using CRUD_Generic.Core.Data;
+﻿using CRUD_Generic.Core.Data;
+using CRUD_Generic.DAL.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUB_Generic.DAL.DbContext
+namespace CRUD_Generic.DAL.DbContext
 {
     public class DbContext : System.Data.Entity.DbContext, IDbContext
     {

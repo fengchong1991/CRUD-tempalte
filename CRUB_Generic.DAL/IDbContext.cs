@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUB_Generic.DAL
+namespace CRUD_Generic.DAL
 {
     public interface IDbContext : IDisposable
     {

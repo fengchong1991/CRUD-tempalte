@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUB_Generic.DAL.Mappings
+namespace CRUD_Generic.DAL.Mappings
 {
     public class UserProfileMapping : EntityTypeConfiguration<UserProfile>
     {
@@ -19,7 +19,7 @@ namespace CRUB_Generic.DAL.Mappings
             Property(t => t.LastName).HasMaxLength(100).HasColumnType("nvarchar");
             Property(t => t.Address).HasColumnType("nvarchar");
             Property(t => t.CreationDate).IsRequired();
-            Property(t => t.ModeifiedDate).IsRequired();
+            Property(t => t.ModifiedDate).IsRequired();
             //table  
             ToTable("UserProfiles");
             //relation            

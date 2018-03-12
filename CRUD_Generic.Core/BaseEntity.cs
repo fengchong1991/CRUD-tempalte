@@ -10,7 +10,7 @@ namespace CRUD_Generic.Core
     {
         public Int64 ID { get; set; }
         public DateTime CreationDate { get; set; }
-        public DateTime ModeifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
         public byte[] TimeStamp { get; set; }
     }
 }

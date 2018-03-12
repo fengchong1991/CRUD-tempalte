@@ -1,5 +1,4 @@
-﻿using CRUB_Generic.DAL;
-using CRUD_Generic.Core;
+﻿using CRUD_Generic.Core;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
