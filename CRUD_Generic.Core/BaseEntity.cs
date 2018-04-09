@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRUD_Generic.Core
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity 
     {
         public Int64 ID { get; set; }
         public DateTime CreationDate { get; set; }

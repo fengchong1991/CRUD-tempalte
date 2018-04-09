@@ -14,5 +14,7 @@ namespace CRUD_Generic.Service
         void InsertUser(User user);
         void UpdateUser(User user);
         void DeleteUser(User user);
+
+        string GetUserFullName(long id);
     }
 }

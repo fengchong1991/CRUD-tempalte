@@ -21,24 +21,24 @@ namespace CRUD_Generic.DAL.Repositories
         }
 
 
-        public T GetById(object id)
+        public virtual T GetById(object id)
         {
             return this._entities.Find(id);
         }
 
-        public int Delete(T entity)
+        public virtual int Delete(T entity)
         {
             _context.Entry(entity).State = EntityState.Deleted;
             return SaveChanges();
         }
 
-        public int Insert(T entity)
+        public virtual int Insert(T entity)
         {
             _entities.Add(entity);
             return SaveChanges();
         }
 
-        public int Update(T entity)
+        public virtual int Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             return SaveChanges();
@@ -83,7 +83,6 @@ namespace CRUD_Generic.DAL.Repositories
                 throw;
             }
         }
-
 
         public IQueryable<T> Table => _entities;
 

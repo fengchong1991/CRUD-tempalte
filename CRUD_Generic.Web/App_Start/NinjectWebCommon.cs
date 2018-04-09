@@ -1,4 +1,6 @@
-﻿using CRUD_Generic.DAL;
+﻿using CRUB_Generic.DAL.Repositories;
+using CRUD_Generic.Core.Data;
+using CRUD_Generic.DAL;
 using CRUD_Generic.DAL.DbContext;
 using CRUD_Generic.DAL.Repositories;
 using CRUD_Generic.Service;
@@ -70,6 +72,7 @@ namespace CRUD_Generic.Web.App_Start
             kernel.Bind<IDbContext>().To<DbContext>().InRequestScope();
             kernel.Bind(typeof(IRepository<>)).To(typeof(BaseRepository<>)).InRequestScope();
             kernel.Bind<IUserService>().To<UserService>();
+
         }
     }
 }

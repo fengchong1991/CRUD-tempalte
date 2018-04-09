@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CRUB_Generic.DAL.Repositories;
 using CRUD_Generic.Core.Data;
 using CRUD_Generic.DAL;
 
@@ -12,6 +13,7 @@ namespace CRUD_Generic.Service
     {
         private readonly IRepository<User> _userRepository;
         private readonly IRepository<UserProfile> _userProfileRepository;
+
 
         public UserService(IRepository<User> userRepository, IRepository<UserProfile> userProfile)
         {
@@ -28,6 +30,11 @@ namespace CRUD_Generic.Service
         public User GetUser(long id)
         {
             return _userRepository.GetById(id);
+        }
+
+        public string GetUserFullName(long id)
+        {
+            return _userProfileRepository.
         }
 
         public IQueryable<User> GetUsers()
