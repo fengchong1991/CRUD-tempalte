@@ -4,49 +4,62 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
+
 
 namespace CRUD_Generic.DAL.Repositories
 {
-    public class BaseRepository<T> : IRepository<T> where T : BaseEntity
+    public abstract class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
         protected readonly IDbContext _context;
-        protected IDbSet<T> _entities;
 
         public BaseRepository(IDbContext context)
         {
             _context = context;
-            _entities = context.Set<T>();
         }
 
-
-        public virtual T GetById(object id)
+        public T GetById(int id)
         {
-            return this._entities.Find(id);
+            return _context.Set<T>().Find(id);
         }
 
-        public virtual int Delete(T entity)
+        public IEnumerable<T> GetAll()
         {
-            _context.Entry(entity).State = EntityState.Deleted;
-            return SaveChanges();
+            return _context.Set<T>().ToList();
         }
 
-        public virtual int Insert(T entity)
+        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
-            _entities.Add(entity);
-            return SaveChanges();
+            return _context.Set<T>().Where(predicate);
         }
 
-        public virtual int Update(T entity)
+        void IRepository<T>.Insert(T entity)
+        {
+            _context.Set<T>().Add(entity);
+            SaveChanges();
+        }
+        public void InsertRange(IEnumerable<T> entities)
+        {
+            _context.Set<T>().AddRange(entities);
+            SaveChanges();
+        }
+
+        public void Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            return SaveChanges();
+            SaveChanges();
         }
 
-        public void Dispose()
+        void IRepository<T>.Delete(T entity)
         {
-            _context.Dispose();
+            _context.Set<T>().Remove(entity);
+            SaveChanges();
+        }
+
+        public void DeleteRange(IEnumerable<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
+            SaveChanges();
         }
 
         protected int SaveChanges()
@@ -83,8 +96,6 @@ namespace CRUD_Generic.DAL.Repositories
                 throw;
             }
         }
-
-        public IQueryable<T> Table => _entities;
 
     }
 }

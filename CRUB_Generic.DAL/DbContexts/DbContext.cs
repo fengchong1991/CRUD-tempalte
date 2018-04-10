@@ -8,16 +8,16 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUD_Generic.DAL.DbContext
+namespace CRUD_Generic.DAL.CRUDDbContext
 {
-    public class DbContext : System.Data.Entity.DbContext, IDbContext
+    public class CRUDDbContext : System.Data.Entity.DbContext, IDbContext
     {
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
 
 
-        public DbContext() : base("name=DbConnectionString")
+        public CRUDDbContext() : base("name=DbConnectionString")
         {
 
         }

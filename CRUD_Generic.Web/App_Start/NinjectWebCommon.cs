@@ -1,7 +1,8 @@
-﻿using CRUB_Generic.DAL.Repositories;
+﻿using CRUB_Generic.DAL;
+using CRUB_Generic.DAL.Repositories;
 using CRUD_Generic.Core.Data;
 using CRUD_Generic.DAL;
-using CRUD_Generic.DAL.DbContext;
+using CRUD_Generic.DAL.CRUDDbContext;
 using CRUD_Generic.DAL.Repositories;
 using CRUD_Generic.Service;
 using CRUD_Generic.Web.App_Start;
@@ -69,8 +70,10 @@ namespace CRUD_Generic.Web.App_Start
         /// <param name="kernel">The kernel.</param>  
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IDbContext>().To<DbContext>().InRequestScope();
-            kernel.Bind(typeof(IRepository<>)).To(typeof(BaseRepository<>)).InRequestScope();
+            kernel.Bind<IDbContext>().To<CRUDDbContext>().InRequestScope();
+            kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+
+
             kernel.Bind<IUserService>().To<UserService>();
 
         }

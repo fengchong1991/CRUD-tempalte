@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace CRUB_Generic.DAL
 {
-    public interface IUserProfileRepository: IRepository<UserProfile>
+    public interface IUserRepository: IRepository<User>
     {
-        string GetFullName();
+
     }
 }
